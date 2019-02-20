@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <string>
 
 // 常量的定义
 #define INT_MAX 59964
@@ -12,9 +13,10 @@ const int MONTHS = 12;
 //      则无符号版本的表示范围为0-65535，当然，仅当数值不会为负时才应使用无符号类型，如入口，微粒
 unsigned int rovert;
 
+using namespace std;
+
 int main() {
     // 命名空间的使用
-    using namespace std;
     std::cout << "Hello, World!" << std::endl;
     cout << "Hello, My Girls" << endl;
     double x = sqrt(9);
@@ -31,4 +33,8 @@ void forcedTypeConversion(int i){
     // 强制类型转换
     char y = (char) i;
     char x = char(i);
+}
+
+void useString(string i){
+    cout << i.append("str") << endl;
 }
