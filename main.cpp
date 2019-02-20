@@ -1,6 +1,9 @@
 #include <iostream>
 #include <cmath>
 
+// 常量的定义
+#define INT_MAX 59964
+
 int main() {
     // 命名空间的使用
     using namespace std;
