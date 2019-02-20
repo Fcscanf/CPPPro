@@ -95,6 +95,27 @@ enum spectrum{
 spectrum band;
 int color = 3 + band;
 
+// 设置枚举变量的值
+// 可以使用赋值操作来显式地设置枚举量的值
+enum bits{
+    one = 1,
+    two = 2,
+    four = 4,
+    eight = 8
+};
+
+// 指定的值必须是整数，也可以只显式地定义其中一些枚举量的值
+// 这里first在默认情况下为0，后面没有被初始化的枚举变量的值将比其前面的枚举量大1，因此third的值为101
+enum bigstep{
+    first, second = 100, third
+};
+
+// 创建多个值相同的枚举量
+// 其中zero和null都为0，one和umero_uno都为1
+enum {
+    zero, null = 0, one, numero_nuo = 1
+};
+
 int main() {
     // 命名空间的使用
     std::cout << "Hello, World!" << std::endl;
