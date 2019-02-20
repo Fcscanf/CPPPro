@@ -26,3 +26,9 @@ double test(double i){
     double x = sqrt(i);
     return x;
 }
+
+void forcedTypeConversion(int i){
+    // 强制类型转换
+    char y = (char) i;
+    char x = char(i);
+}
