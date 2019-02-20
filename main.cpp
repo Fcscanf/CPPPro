@@ -15,15 +15,6 @@ unsigned int rovert;
 
 using namespace std;
 
-int main() {
-    // 命名空间的使用
-    std::cout << "Hello, World!" << std::endl;
-    cout << "Hello, My Girls" << endl;
-    double x = sqrt(9);
-    cout << x;
-    return 0;
-}
-
 double test(double i){
     double x = sqrt(i);
     return x;
@@ -37,4 +28,35 @@ void forcedTypeConversion(int i){
 
 void useString(string i){
     cout << i.append("str") << endl;
+}
+
+// 结构的使用
+struct person{
+    string name;
+    int age;
+};
+
+// 定义结构体时创建结构体变量以及赋值
+struct student{
+    string name;
+} ky = {"ky"};
+
+// 定义没有名称的结构体同时定义变量
+struct {
+    string name;
+} brid;
+
+// 定义结构体变量时可以省略结构体关键字struct
+struct person p = {"str", 18};
+person person1;
+
+int main() {
+    // 命名空间的使用
+    std::cout << "Hello, World!" << std::endl;
+    cout << "Hello, My Girls" << endl;
+    double x = sqrt(9);
+    cout << x << endl;
+    cout << p.name << endl;
+    cout << ky.name << endl;
+    return 0;
 }
