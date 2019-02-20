@@ -50,6 +50,18 @@ struct {
 struct person p = {"str", 18};
 person person1;
 
+// 结构体中的位字段
+//  C++也允许指定占用特定位数的结构成员，这使得创建与某个硬件设备上的寄存器对应的数据结构非常方便。
+//  字段的类型应为整型或枚举，接下来是冒号，冒号后面是一个数字，它指定了使用的位数。可以使用没有名称的字段来提供间距
+//  每个成员都被称为位字段（bit field）
+// 位字段通常用在低级编程中
+struct torgle_register{
+    unsigned int SN : 4;
+    unsigned int : 4;
+    bool goodIn: 1;
+    bool goodTorgle: 1;
+};
+
 int main() {
     // 命名空间的使用
     std::cout << "Hello, World!" << std::endl;
