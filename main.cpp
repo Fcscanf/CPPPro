@@ -62,6 +62,30 @@ struct torgle_register{
     bool goodTorgle: 1;
 };
 
+// 共用体union
+//      共用体是一种数据格式，它能够存储不同的数据类型，但只能同时存储其中的一种类型。
+//          结构体可以同时存储int、long和double
+//          共用体只能存储int、long或double,条件是在不同的时间进行
+//      用于共用体每次只能存储一个值，因此它必须有足够的空间来存储最大的成员，所以，共用体的长度为其最大成员的长度
+//  共用体的用途:当数据项使用两种或更多格式（但不会同时使用）时，可节省空间。
+//          例如，假设管理一个小商品目录，其中有一些商品的ID为整数，而另一些ID为字符串，这种情况下可以使用共用体
+union one4all{
+    int int_val;
+    int long long_val;
+    double double_val;
+};
+
+//  匿名共用体anonymous union没有名称
+//  其成员位于相同地址处的变量。每次只有一个成员是当前的成员
+struct widget{
+    char brand[20];
+    int type;
+    union {
+        long id_num;
+        char id_char[20];
+    };
+};
+
 int main() {
     // 命名空间的使用
     std::cout << "Hello, World!" << std::endl;
