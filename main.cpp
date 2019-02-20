@@ -86,6 +86,15 @@ struct widget{
     };
 };
 
+// 枚举类型
+//  枚举量：默认情况下会将整数值赋值给枚举量，第一个枚举量为0，第二个枚举量为1···，通过指定的整数值覆盖默认值
+enum spectrum{
+    red, orange, yellow, green, blue, violet, indigo, ultraviolet
+};
+
+spectrum band;
+int color = 3 + band;
+
 int main() {
     // 命名空间的使用
     std::cout << "Hello, World!" << std::endl;
@@ -94,5 +103,6 @@ int main() {
     cout << x << endl;
     cout << p.name << endl;
     cout << ky.name << endl;
+    cout << color << endl;
     return 0;
 }
