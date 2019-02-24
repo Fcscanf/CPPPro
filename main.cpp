@@ -231,6 +231,7 @@ void pointer(){
 
 // 动态结构
 void structure(){
+
     struct things{
         int good;
         int bad;
@@ -253,6 +254,15 @@ void structure(){
 
     // 释放使用new创建的动态结构的空间
     delete person2;
+}
+
+void input(){
+    string string1;
+    // 将输入的字符串读入到变量中。不过该操作将忽略空格、换行和制表符
+    cin >> string1;
+    // 可以通过调用成员函数将返回下一个输入字符——包括空格、换行和制表符
+    string1 = cin.get();
+
 }
 
 int main() {
