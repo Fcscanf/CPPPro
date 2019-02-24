@@ -165,7 +165,7 @@ void pointer(){
     // 地使用new和delete。否则程序将发生内存泄露memory leak，也就是说，被分配的内存再也无法使用了；如果
     // 内存泄露严重，则程序将由于不断寻找更多内存而终止
     int *p3 = new int;
-    delete p3;
+    delete p3, pt;
 
     // 不要尝试释放已经释放的内存块，C++标准指出，这样做的结果将是不确定的，这意味着什么情况都可能发生。另外
     // 不能使用delete来释放声明变量所获得的内存；
@@ -256,6 +256,9 @@ void structure(){
 }
 
 int main() {
+
+    int y;
+
     // 命名空间的使用
     std::cout << "Hello, World!" << std::endl;
     cout << "Hello, My Girls" << endl;
@@ -265,8 +268,26 @@ int main() {
     cout << ky.name << endl;
     cout << color << endl;
 
+    cout << "The expression x = 100 has the value ";
+    // ()的优先级高于<<，则会先对x赋值100
+    cout << (x = 100) << endl;
+    cout << "The expresion x < 3 has the value ";
+    cout << (x < 3) << endl;
+    // The expresion x < 3 has the value 0
+    cout << "The expresion x > 3 has the value ";
+    cout << (x > 3) << endl;
+    // The expresion x > 3 has the value 1
+    // 设置判断结果的布尔值输出
+    cout.setf(ios_base::boolalpha);
+    cout << "The expresion x < 3 has the value ";
+    cout << (x < 3) << endl;
+    // The expresion x < 3 has the value false
+    cout << "The expresion x > 3 has the value ";
+    cout << (x > 3) << endl;
+    // The expresion x > 3 has the value true
+
     // pointer();
-    structure();
+    //structure();
 
     return 0;
 }
