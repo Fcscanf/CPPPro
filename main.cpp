@@ -229,6 +229,32 @@ void pointer(){
     cout << &flower << endl;
 }
 
+// 动态结构
+void structure(){
+    struct things{
+        int good;
+        int bad;
+    };
+
+    things grubonse = {3, 453};
+    things *pt = &grubonse;
+
+    // 如果结构体标识符是结构名，则使用句点操作符
+    // 如果标识符是指向结构的指针，则使用箭头操作符
+    cout << "ps.good = " << pt->good << endl;
+    cout << "ps.bad = " << pt->bad << endl;
+
+    // 使用new创建结构体变量
+    person *person2 = new person;
+    person2->name = "fc";
+    person2->age = 18;
+    cout << "person2.name = " << person2->name << endl;
+    cout << "person2.age = " << person2->age << endl;
+
+    // 释放使用new创建的动态结构的空间
+    delete person2;
+}
+
 int main() {
     // 命名空间的使用
     std::cout << "Hello, World!" << std::endl;
@@ -239,7 +265,8 @@ int main() {
     cout << ky.name << endl;
     cout << color << endl;
 
-    pointer();
+    // pointer();
+    structure();
 
     return 0;
 }
