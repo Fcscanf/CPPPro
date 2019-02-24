@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <fstream>
 
 // 常量的定义
 #define INT_MAX 59964
@@ -265,6 +266,35 @@ void input(){
 
 }
 
+void fileoperation(string filename){
+    // 文件写入相关操作
+    ofstream outFile;
+    outFile.open("info.txt");
+    outFile << fixed;
+    outFile << "Make and model" << endl;
+    outFile << "Year" << endl;
+    outFile.close();
+
+    // 文件读取操作
+    ifstream inFile;
+    inFile.open(filename);
+    if (!inFile.is_open()){
+        cout << "Could not open the file" << filename << endl;
+    }
+
+    string value;
+    inFile >> value;
+    if (inFile.eof())
+        cout << "End of file reached;" << endl;
+    else if (inFile.fail())
+        cout << "Input terminated by data mismatch." << endl;
+    else
+        cout << "Input terminated for unknown reason." << endl;
+
+    inFile.close();
+
+}
+
 int main() {
 
     int y;
@@ -298,6 +328,7 @@ int main() {
 
     // pointer();
     //structure();
+    //fileoperation("info.txt");
 
     return 0;
 }
