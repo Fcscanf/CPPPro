@@ -295,6 +295,17 @@ void fileoperation(string filename){
 
 }
 
+// 定义指针函数
+// 指针函数声明时需要将*和函数名括起来，括号优先级比*操作符高，因此*fun (int)代表返回指针的函数，
+// 而(*fun) (int)意味着fun是一个指向函数的指针
+double pam(int);
+double (*pf) (int);
+// 指针函数的赋值,将pam函数的地址赋给pf，赋值函数和指针函数的返回值类型编写相同才能赋值
+// pf = pam;
+// 指针函数的调用
+double x = pam(3);
+double y = (*pf)(5);
+
 int main() {
 
     int y;
