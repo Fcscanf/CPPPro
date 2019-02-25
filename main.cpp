@@ -303,8 +303,8 @@ double (*pf) (int);
 // 指针函数的赋值,将pam函数的地址赋给pf，赋值函数和指针函数的返回值类型编写相同才能赋值
 // pf = pam;
 // 指针函数的调用
-double x = pam(3);
-double y = (*pf)(5);
+//double x = pam(3);
+//double y = (*pf)(5);
 
 // 内联函数
 // 内联函数声明前加上关键字inline
@@ -312,6 +312,24 @@ double y = (*pf)(5);
 inline double square(double x){
     return x * x;
 }
+
+// 引用变量
+// 使用类型标识符，int &指向int的引用,rodents和rats指向相同的值和内存单元
+void referenceVariable(){
+    int rats;
+    //int *rodents = &rats;
+    int & rodents = rats;
+    rats = 10;
+    cout << "rats Value is : " << rats << endl;
+    cout << "rats Address is : " << &rats << endl;
+    cout << "rats Value is : " << rodents << endl;
+    cout << "rats Address is : " << &rodents << endl;
+    // rats Value is : 10
+    // rats Address is : 0xffffcbc4
+    // rats Value is : 10
+    // rats Address is : 0xffffcbc4
+}
+
 
 int main() {
 
@@ -347,6 +365,7 @@ int main() {
     // pointer();
     //structure();
     //fileoperation("info.txt");
+    //referenceVariable();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
