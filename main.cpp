@@ -330,6 +330,28 @@ void referenceVariable(){
     // rats Address is : 0xffffcbc4
 }
 
+// 函数模板的定义
+//template <class Any>
+template <typename Any>
+void Swap(Any &a, Any &b){
+    Any temp;
+    temp = a;
+    a= b;
+    b = temp;
+}
+
+void useTemSwap(){
+    int i = 10;
+    int j = 20;
+    cout << "i, j =" << i << "," << j << endl;
+    Swap(i, j);
+    cout << "i, j =" << i << "," << j << endl;
+    double n = 5.0;
+    double m = 10.0;
+    cout << "n, m =" << n << "," << m << endl;
+    Swap(n, m);
+    cout << "n, m =" << n << "," << m << endl;
+}
 
 int main() {
 
@@ -366,6 +388,7 @@ int main() {
     //structure();
     //fileoperation("info.txt");
     //referenceVariable();
+    useTemSwap();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
