@@ -306,6 +306,13 @@ double (*pf) (int);
 double x = pam(3);
 double y = (*pf)(5);
 
+// 内联函数
+// 内联函数声明前加上关键字inline
+// 内联函数占用内存大，但运行速度快
+inline double square(double x){
+    return x * x;
+}
+
 int main() {
 
     int y;
@@ -340,6 +347,9 @@ int main() {
     // pointer();
     //structure();
     //fileoperation("info.txt");
+
+    double a = square(5.0);
+    cout << "a : " << a << endl;
 
     return 0;
 }
