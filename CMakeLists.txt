@@ -3,4 +3,4 @@ project(Pro1)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Pro1 main.cpp moudel1/Mouh.cpp moudel1/Mouh.h)
+add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h module2/Stock.cpp module2/Stock.h)
