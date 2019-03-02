@@ -4,6 +4,7 @@
 #include <fstream>
 #include "module1/Mouh.h"
 #include "module2/Stock.h"
+
 // 常量的定义
 #define INT_MAX 59964
 
@@ -431,7 +432,19 @@ int main() {
     //fileoperation("info.txt");
     //referenceVariable();
     useTemSwap();
+
     Stock stock = Stock{};
+
+    // 对象数组-要创建对象数组，则这个类必须有默认构造函数
+    Stock stuff[4] = {
+            Stock("NanoSmart", 12.5, 20),
+            Stock("Boffo Objects", 200, 2.0),
+            Stock("Monolithic Obelisks", 130, 3.24),
+            Stock("Fleep EnterPrices", 60, 6.5)
+    };
+    stuff[0].update(23.0);
+    stuff[3].show();
+    Stock tops = stuff[2].topval(stuff[1]);
 
     double a = square(5.0);
     cout << "a : " << a << endl;
