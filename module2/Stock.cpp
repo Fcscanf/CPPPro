@@ -82,7 +82,7 @@ void Stocks::show() {
 //}
 
 // 声明类变量
-Stocks kate, joe;
+//Stocks kate, joe;
 
 Stocks::~Stocks() {
     cout << "折构函数调用结束" << endl;

@@ -4,6 +4,7 @@
 #include <fstream>
 #include "module1/Mouh.h"
 #include "module2/Stock.h"
+#include "module3/FcTime.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -396,9 +397,8 @@ void useTemSwap(){
     Show(d2);
 }
 
-int main() {
-
-    int y;
+// 判断结果格式化输出
+void coutFormat(){
 
     // 命名空间的使用
     std::cout << "Hello, World!" << std::endl;
@@ -426,25 +426,47 @@ int main() {
     cout << "The expresion x > 3 has the value ";
     cout << (x > 3) << endl;
     // The expresion x > 3 has the value true
+}
 
-    // pointer();
+// 对象数组的使用
+//void ObjectArray(){
+//    Stock stock = Stock{};
+//
+//    // 对象数组-要创建对象数组，则这个类必须有默认构造函数
+//    Stock stuff[4] = {
+//            Stock("NanoSmart", 12.5, 20),
+//            Stock("Boffo Objects", 200, 2.0),
+//            Stock("Monolithic Obelisks", 130, 3.24),
+//            Stock("Fleep EnterPrices", 60, 6.5)
+//    };
+//    stuff[0].update(23.0);
+//    stuff[3].show();
+//    Stock tops = stuff[2].topval(stuff[1]);
+//}
+
+// 类的使用以及友元函数的使用
+void friendFunction(){
+    FcTime aida(3, 25);
+    FcTime tosca(2, 48);
+    FcTime temp;
+
+    cout << "Aida and Tosca:\n";
+    cout << aida << "; " << tosca << endl;
+    temp = aida + tosca;
+    cout << "Aida + Tosca" << endl;
+    temp = aida * 1.17;
+    cout << "Aida * 1.17: " << temp << endl;
+    cout << "Tosca * 10: " << 10 * tosca << endl;
+}
+
+int main() {
+
+    //pointer();
     //structure();
     //fileoperation("info.txt");
     //referenceVariable();
-    useTemSwap();
-
-    Stock stock = Stock{};
-
-    // 对象数组-要创建对象数组，则这个类必须有默认构造函数
-    Stock stuff[4] = {
-            Stock("NanoSmart", 12.5, 20),
-            Stock("Boffo Objects", 200, 2.0),
-            Stock("Monolithic Obelisks", 130, 3.24),
-            Stock("Fleep EnterPrices", 60, 6.5)
-    };
-    stuff[0].update(23.0);
-    stuff[3].show();
-    Stock tops = stuff[2].topval(stuff[1]);
+    //useTemSwap();
+    friendFunction();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
