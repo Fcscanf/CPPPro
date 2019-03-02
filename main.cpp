@@ -365,6 +365,13 @@ void Show(int a[]){
     cout << endl;
 }
 
+// 模板实例化
+// 隐式实例化
+template void Swap<int> (int &, int &);
+// 显示实例化
+//template <> void Swap<int>(int &, int &);
+//template <> void Swap(int &, int &);
+
 void useTemSwap(){
     int i = 10, j = 20;
     cout << "i, j =" << i << "," << j << endl;
