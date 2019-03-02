@@ -21,6 +21,10 @@ private:
     }
 
 public:
+    // 默认构造函数
+    Stocks();
+    // 折构函数——用来释放内存
+    ~Stocks();
     void acquire(const char *co, int n, double pr);
     void buy(int num, double price);
     void sell(int num, double price);
@@ -52,7 +56,7 @@ void Stocks::buy(int num, double price) {
 
 void Stocks::sell(int num, double price) {
     if(num < 0){
-        cerr << "Nummber of shares sold can't be negative." << "Transaction is aborted.\n";
+        cerr << "Number of shares sold can't be negative." << "Transaction is aborted.\n";
     } else if (num > shares){
         cerr << "You can't sell more than you have!" << "Transaction is aborted.\n";
     } else {
@@ -79,3 +83,7 @@ void Stocks::show() {
 
 // 声明类变量
 Stocks kate, joe;
+
+Stocks::~Stocks() {
+    cout << "折构函数调用结束" << endl;
+}

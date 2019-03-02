@@ -2,7 +2,8 @@
 #include <cmath>
 #include <string>
 #include <fstream>
-
+#include "module1/Mouh.h"
+#include "module2/Stock.h"
 // 常量的定义
 #define INT_MAX 59964
 
@@ -430,6 +431,7 @@ int main() {
     //fileoperation("info.txt");
     //referenceVariable();
     useTemSwap();
+    Stock stock = Stock{};
 
     double a = square(5.0);
     cout << "a : " << a << endl;
