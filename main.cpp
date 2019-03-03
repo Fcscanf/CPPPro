@@ -566,6 +566,13 @@ void bank(){
 void usett(){
     TableTennisPlayer player1("Chuck", "Blizzard", true);
     TableTennisPlayer player2("Tara", "Boomdea", false);
+    RatedPlayer ratedPlayer(1140, "Mallory", "Duck", true);
+    ratedPlayer.Name();
+    if (ratedPlayer.HasTable()) {
+        cout << ":has a table.\n";
+    }else{
+        cout << ":has't a table.\n";
+    }
     player1.Name();
     if (player1.HasTable()) {
         cout << ":has a table.\n";
@@ -578,6 +585,13 @@ void usett(){
     } else{
         cout << ":has't a table.\n";
     }
+    cout << "Name: ";
+    ratedPlayer.Name();
+    cout << ":Rating: " << ratedPlayer.Rating() << endl;
+    RatedPlayer ratedPlayer1(1221, player1);
+    cout << "Name: ";
+    ratedPlayer1.Name();
+    cout << ":Rating :" << ratedPlayer1.Rating() << endl;
 }
 
 int main() {
