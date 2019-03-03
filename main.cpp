@@ -3,10 +3,12 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <ctime>
 #include "module1/Mouh.h"
 #include "module2/Stock.h"
 #include "module3/FcTime.h"
 #include "module4/vector.h"
+#include "module5/queue.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -495,6 +497,71 @@ void randwalk(){
     cout << "Bye!\n";
 }
 
+// 队列类
+const int MIN_PER_HR = 60;
+bool newcustomer(double x);
+bool newcustomer(double x){ return rand()*x / RAND_MAX < 1;}
+
+void bank(){
+    cout << "Case Study:Bank of Heather Automatic Teller\n";
+    cout << "Enter maximum size of queue: ";
+    int qs;
+    cin >> qs;
+    Queue line(qs);
+
+    cout << "Enter the number of simulation hours: ";
+    int hours;
+    cin >> hours;
+    long cyclelimit = MIN_PER_HR * hours;
+
+    cout << "Enter the average number of customers per hour: ";
+    double perhour;
+    cin >> perhour;
+    double min_per_cust;
+    min_per_cust = MIN_PER_HR / perhour;
+
+    Item temp;
+    long turnaways = 0;
+    long customers = 0;
+    long served = 0;
+    long sum_line = 0;
+    int wait_time = 0;
+    long line_wait = 0;
+
+    for (int cycle = 0; cycle < cyclelimit; cycle ++){
+        if (newcustomer(min_per_cust)){
+            if (line.isfull())
+                turnaways++;
+            else{
+                customers++;
+                temp.set(cycle);
+                line.enqueue(temp);
+            }
+        }
+        if (wait_time <= 0 && !line.isempty()){
+            line.dequeue(temp);
+            wait_time = temp.ptime();
+            line_wait += cycle = temp.when();
+            served++;
+        }
+        if (wait_time > 0)
+            wait_time--;
+        sum_line += line.queuecount();
+    }
+    if (customers >0){
+        cout << "customers accepted: " << customers << endl;
+        cout << "customers served: " << served << endl;
+        cout << "turnaways: " << turnaways << endl;
+        cout << "average queue size: ";
+        cout.setf(ios_base::fixed, ios_base::floatfield);
+        cout.setf(ios_base::showpoint);
+        cout << (double)sum_line/cyclelimit << endl;
+        cout << "average wait time: " << (double)line_wait/served << " minutes\n";
+    } else
+        cout << "No customers!\n";
+    cout << "Done!\n";
+}
+
 int main() {
 
     //pointer();
@@ -503,7 +570,8 @@ int main() {
     //referenceVariable();
     //useTemSwap();
     //friendFunction();
-    randwalk();
+    //randwalk();
+    bank();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
