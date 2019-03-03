@@ -9,4 +9,4 @@ add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module4/vector.cpp module4/vector.h
         module5/Customer.cpp module5/Customer.h
         module5/queue.cpp module5/queue.h
-        module6_extends/tabtenn.cpp module6_extends/tabtenn.h)
+        module6_extends/tabtenn.cpp module6_extends/tabtenn.h module7_polymorphism/brass.cpp module7_polymorphism/brass.h)

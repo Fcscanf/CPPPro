@@ -10,6 +10,7 @@
 #include "module4/vector.h"
 #include "module5/queue.h"
 #include "module6_extends/tabtenn.h"
+#include "module7_polymorphism/brass.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -563,6 +564,7 @@ void bank(){
     cout << "Done!\n";
 }
 
+// 派生类
 void usett(){
     TableTennisPlayer player1("Chuck", "Blizzard", true);
     TableTennisPlayer player2("Tara", "Boomdea", false);
@@ -594,6 +596,25 @@ void usett(){
     cout << ":Rating :" << ratedPlayer1.Rating() << endl;
 }
 
+// 多态公有继承
+void useBrass(){
+    Brass Piggy("Procelot Pigg", 381299, 4000.00);
+    BrassPlus Hoggy("Horatio Hogg", 382288, 3000.00);
+    Piggy.ViewAcct();
+    cout << endl;
+    Hoggy.ViewAcct();
+    cout << endl;
+    cout << "Depositing $1000 into the Hogg Account: \n";
+    Hoggy.Deposit(1000.00);
+    cout << "New balance: $ " << Hoggy.Balance() << endl;
+    cout << "Withdrawing $4200 from the Pigg Account:\n";
+    Piggy.Withdraw(4200.00);
+    cout << "Pigg account balance: $ " << Piggy.Balance() << endl;
+    cout << "Withdrawing $4200 from the Hogg Account:\n";
+    Hoggy.Withdraw(4200.00);
+    Hoggy.ViewAcct();
+}
+
 int main() {
 
     //pointer();
@@ -604,7 +625,8 @@ int main() {
     //friendFunction();
     //randwalk();
     //bank();
-    usett();
+    //usett();
+    useBrass();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
