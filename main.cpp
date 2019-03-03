@@ -2,9 +2,11 @@
 #include <cmath>
 #include <string>
 #include <fstream>
+#include <cstdlib>
 #include "module1/Mouh.h"
 #include "module2/Stock.h"
 #include "module3/FcTime.h"
+#include "module4/vector.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -459,6 +461,40 @@ void friendFunction(){
     cout << "Tosca * 10: " << 10 * tosca << endl;
 }
 
+// 使用Vector类模拟随机行走
+void randwalk(){
+    using VECTOR::Vector;
+    srand(time(0));
+    double direction;
+    Vector step;
+    Vector result(0.0, 0.0);
+    unsigned long steps = 0;
+    double dstep;
+    double target;
+    cout << "Enter target distance(q to quit): ";
+    while (cin >> target) {
+        cout << "Enter step length: ";
+        if (!(cin >> dstep)) {
+            break;
+        }
+        while (result.magval() < target){
+            direction = rand()%360;
+            step.set(dstep, direction, 'p');
+            result = result + step;
+            steps++;
+        }
+        cout << "After " << steps << " steps, the subject has the following location: \n";
+        cout << result << endl;
+        result.polar_mode();
+        cout << " or\n" << result << endl;
+        cout << "Average outward distance per step = " << result.magval()/steps << endl;
+        steps = 0;
+        result.set(0.0, 0.0);
+        cout << "Enter target distance (q to quit): ";
+    }
+    cout << "Bye!\n";
+}
+
 int main() {
 
     //pointer();
@@ -466,7 +502,8 @@ int main() {
     //fileoperation("info.txt");
     //referenceVariable();
     //useTemSwap();
-    friendFunction();
+    //friendFunction();
+    randwalk();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
