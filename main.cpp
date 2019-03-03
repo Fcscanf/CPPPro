@@ -9,6 +9,7 @@
 #include "module3/FcTime.h"
 #include "module4/vector.h"
 #include "module5/queue.h"
+#include "module6_extends/tabtenn.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -562,6 +563,23 @@ void bank(){
     cout << "Done!\n";
 }
 
+void usett(){
+    TableTennisPlayer player1("Chuck", "Blizzard", true);
+    TableTennisPlayer player2("Tara", "Boomdea", false);
+    player1.Name();
+    if (player1.HasTable()) {
+        cout << ":has a table.\n";
+    } else{
+        cout << ":has't a table.\n";
+    }
+    player2.Name();
+    if (player2.HasTable()) {
+        cout << ":has a table.\n";
+    } else{
+        cout << ":has't a table.\n";
+    }
+}
+
 int main() {
 
     //pointer();
@@ -571,7 +589,8 @@ int main() {
     //useTemSwap();
     //friendFunction();
     //randwalk();
-    bank();
+    //bank();
+    usett();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
