@@ -11,6 +11,7 @@
 #include "module5/queue.h"
 #include "module6_extends/tabtenn.h"
 #include "module7_polymorphism/brass.h"
+#include "module9_dynamic_memory_allocation_friend_inheritance/dma.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -615,6 +616,21 @@ void useBrass(){
     Hoggy.ViewAcct();
 }
 
+// 抽象类的应用
+void usedma(){
+    baseDMA shirt("Portabelly", 8);
+    lacksDMA balloon("red", "Blimpo", 4);
+    hasDMA map("Mercator", "Buffalo Keys", 5);
+    cout << shirt << endl;
+    cout << balloon << endl;
+    cout << map << endl;
+    lacksDMA balloon2(balloon);
+    hasDMA map2;
+    map2 = map;
+    cout << balloon2 << endl;
+    cout << map2 << endl;
+}
+
 int main() {
 
     //pointer();
@@ -626,7 +642,8 @@ int main() {
     //randwalk();
     //bank();
     //usett();
-    useBrass();
+    //useBrass();
+    usedma();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
