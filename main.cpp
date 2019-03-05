@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <cstring>
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
@@ -12,6 +13,7 @@
 #include "module6_extends/tabtenn.h"
 #include "module7_polymorphism/brass.h"
 #include "module9_dynamic_memory_allocation_friend_inheritance/dma.h"
+#include "module10_code_reuse/workermi.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -631,6 +633,45 @@ void usedma(){
     cout << map2 << endl;
 }
 
+// 代码的重用，私有继承，多重继承
+const int SIZE_M = 5;
+void workmi(){
+    Worker * lolas[SIZE_M];
+    int ct;
+    for (ct = 0; ct < SIZE_M; ct++) {
+        char choise;
+        cout << "Enter the employee category:\n"
+        << "w: waiter s: singer t: singing waiter q: quit\n";
+        cin >> choise;
+        while (strchr("wstq", choise) == NULL) {
+            cout << "Please enter a w, s, t, or q: ";
+            cin >> choise;
+        }
+        if (choise == 'q')
+            break;
+        switch (choise) {
+            case 'w': lolas[ct] = new Waiter;
+                break;
+            case 's': lolas[ct] = new Singer;
+                break;
+            case 't': lolas[ct] = new SingingWaiter;
+                break;
+        }
+        cin.get();
+        lolas[ct]->Set();
+    }
+
+    cout << "\nHere is your sraff:\n";
+    int i;
+    for (i = 0; i < ct; i++) {
+        cout << endl;
+        lolas[i]->Show();
+    }
+    for  (i = 0; i < ct; i++)
+        delete lolas[i];
+    cout << "Bye.\n";
+}
+
 int main() {
 
     //pointer();
@@ -643,7 +684,8 @@ int main() {
     //bank();
     //usett();
     //useBrass();
-    usedma();
+    //usedma();
+    workmi();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
