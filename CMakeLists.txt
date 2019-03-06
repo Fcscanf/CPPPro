@@ -20,4 +20,4 @@ add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module11_class_template/pointer_stack/stcktp.cpp
         module11_class_template/pointer_stack/stcktp.h
         module11_class_template/arrry/arraytp.cpp
-        module11_class_template/arrry/arraytp.h)
+        module11_class_template/arrry/arraytp.h module11_class_template/multiple_type_parameters/pairs.cpp module11_class_template/multiple_type_parameters/pairs.h)

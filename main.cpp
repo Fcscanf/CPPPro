@@ -18,6 +18,7 @@
 // #include "module11_class_template/stacktp.h"
 #include "module11_class_template/pointer_stack/stcktp.h"
 #include "module11_class_template/arrry/arraytp.h"
+#include "module11_class_template/multiple_type_parameters/pairs.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -771,6 +772,25 @@ void useArrayTemplate(){
     cout << "Done.\n";
 }
 
+// 多个类型参数
+void useMultipleTypeParameter(){
+    Pair<string, int> rating[4] = {
+            Pair<string, int>("The Purple Duke", 5),
+            Pair<string, int>("Jake's Frisco AI Fresco", 4),
+            Pair<string, int>("Mont Souffle", 5),
+            Pair<string, int>("Gertie's Eats", 3)
+    };
+    int joints = sizeof(rating) / sizeof(Pair<string, int>);
+    cout << "Rating :\t Eatery\n";
+    for (int i = 0; i < joints; i++) {
+        cout << rating[i].second() << ":\t" << rating[i].first() << endl;
+        cout << "Oops! Revised rating :\n";
+        rating[3].first() = "Gertie's Fab Eat";
+        rating[3].second() = 6;
+        cout << rating[3].second() << ":\t" << rating[3].first() << endl;
+    }
+}
+
 int main() {
 
     //pointer();
@@ -787,7 +807,8 @@ int main() {
     //workmi();
     //useTemplateClass();
     //usePointerStack();
-    useArrayTemplate();
+    //useArrayTemplate();
+    useMultipleTypeParameter();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
