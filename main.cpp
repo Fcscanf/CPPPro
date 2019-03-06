@@ -5,6 +5,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <cctype>
 #include "module1/Mouh.h"
 #include "module2/Stock.h"
 #include "module3/FcTime.h"
@@ -14,6 +15,7 @@
 #include "module7_polymorphism/brass.h"
 #include "module9_dynamic_memory_allocation_friend_inheritance/dma.h"
 #include "module10_code_reuse/workermi.h"
+#include "module11_class_template/stacktp.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -672,6 +674,44 @@ void workmi(){
     cout << "Bye.\n";
 }
 
+// 使用模板类
+void useTemplateClass(){
+    Stack<string> st;
+    char ch;
+    string po;
+    cout << "Please enter A to add a purchase order, \n" << "P to process a PO, or to quit.\n";
+    while (cin >> ch && toupper(ch) != 'Q') {
+        while (cin.get() != '\n') {
+            continue;
+        }
+        if (!isalpha(ch)) {
+            cout << '\a';
+            continue;
+        }
+        switch (ch){
+            case 'A':
+            case 'a': cout << "Enter a PO number to add: ";
+            cin >> po;
+            if (st.isfull())
+                cout << "Stack already full\n";
+            else
+                st.push(po);
+            break;
+        case 'P':
+        case 'p': if (st.isempty())
+            cout << "Stack already empty\n";
+            else{
+                st.pop(po);
+                cout << "PO #" << po << " popped\n";
+                break;
+            }
+        }
+        cout << "Please enter A to add a purchase order ,\n" << "P to process a PO , or Q to quit.\n";
+    }
+    cout << "Bye\n";
+
+}
+
 int main() {
 
     //pointer();
@@ -685,7 +725,8 @@ int main() {
     //usett();
     //useBrass();
     //usedma();
-    workmi();
+    //workmi();
+    useTemplateClass();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
