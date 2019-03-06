@@ -17,6 +17,7 @@
 #include "module10_code_reuse/workermi.h"
 // #include "module11_class_template/stacktp.h"
 #include "module11_class_template/pointer_stack/stcktp.h"
+#include "module11_class_template/arrry/arraytp.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -744,6 +745,32 @@ void usePointerStack(){
     }
 }
 
+// 数组模板的使用
+void useArrayTemplate(){
+    ArrayTP<int, 10> sums;
+    ArrayTP<double , 10> aves;
+    ArrayTP<ArrayTP<int, 5>, 10> twodee;
+    int i, j;
+    for (int i = 0; i < 10; i++) {
+        sums[i] = 0;
+        for (int i = 0; i < 5; i++) {
+            twodee[i][j] = (i + 1)*(j + 1);
+            sums[i] += twodee[i][j];
+        }
+        aves[i] = (double)sums[i] / 10;
+    }
+    for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
+            cout.width(2);
+            cout << twodee[i][j] << ' ';
+        }
+        cout << " :sum = ";
+        cout.widen(3);
+        cout << sums[i] << ", average = " << aves[i] << endl;
+    }
+    cout << "Done.\n";
+}
+
 int main() {
 
     //pointer();
@@ -759,7 +786,8 @@ int main() {
     //usedma();
     //workmi();
     //useTemplateClass();
-    usePointerStack();
+    //usePointerStack();
+    useArrayTemplate();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
