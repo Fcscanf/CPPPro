@@ -13,4 +13,4 @@ add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module5/queue.cpp module5/queue.h
         module6_extends/tabtenn.cpp module6_extends/tabtenn.h
         module7_polymorphism/brass.cpp module7_polymorphism/brass.h
-        module9_dynamic_memory_allocation_friend_inheritance/dma.cpp module9_dynamic_memory_allocation_friend_inheritance/dma.h module10_code_reuse/workermi.cpp module10_code_reuse/workermi.h module11_class_template/stacktp.cpp module11_class_template/stacktp.h)
+        module9_dynamic_memory_allocation_friend_inheritance/dma.cpp module9_dynamic_memory_allocation_friend_inheritance/dma.h module10_code_reuse/workermi.cpp module10_code_reuse/workermi.h module11_class_template/stacktp.cpp module11_class_template/stacktp.h module11_class_template/pointer_stack/stcktp.cpp module11_class_template/pointer_stack/stcktp.h)

@@ -15,7 +15,8 @@
 #include "module7_polymorphism/brass.h"
 #include "module9_dynamic_memory_allocation_friend_inheritance/dma.h"
 #include "module10_code_reuse/workermi.h"
-#include "module11_class_template/stacktp.h"
+// #include "module11_class_template/stacktp.h"
+#include "module11_class_template/pointer_stack/stcktp.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -712,6 +713,37 @@ void useTemplateClass(){
 
 }
 
+// 正确使用指针堆栈
+const int Num = 10;
+void usePointerStack(){
+    srand(time(0));
+    cout << "Please enter stack size: ";
+    int stacksize;
+    cin >> stacksize;
+    Stack<const char *> st(stacksize);
+    const char * in[Num] = {
+            "1:Hank Gilgamesh", "2:Kiki Ishtar", "3:Betty Rocker", "4:Ian Flagranti",
+            "5:Wolfgang Kibble", "6:Portia Koop", "7:Joy Almonda", "8:Xaverie Paprika",
+            "9:Juan Moore", "10:Misha Mache"
+    };
+    const char * out[Num];
+    int processed = 0;
+    int nextin = 0;
+    while (processed < Num) {
+        if (st.isempty()) {
+            st.push(in[nextin++]);
+        } else if(st.isfull())
+            st.pop(out[processed++]);
+        else if (rand()%2 && nextin < Num)
+            st.push(in[nextin++]);
+        else
+            st.pop(out[processed++]);
+        for (int i = 0; i < Num; i++)
+            cout << out[i] << endl;
+        cout << "Bye\n";
+    }
+}
+
 int main() {
 
     //pointer();
@@ -726,7 +758,8 @@ int main() {
     //useBrass();
     //usedma();
     //workmi();
-    useTemplateClass();
+    //useTemplateClass();
+    usePointerStack();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
