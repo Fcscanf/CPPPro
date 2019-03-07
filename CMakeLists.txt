@@ -24,4 +24,4 @@ add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module11_class_template/multiple_type_parameters/pairs.cpp
         module11_class_template/multiple_type_parameters/pairs.h
         module11_class_template/member_template/tempmemb.cpp
-        module11_class_template/member_template/tempmemb.h module11_class_template/temp_parm/tempparm.cpp module11_class_template/temp_parm/tempparm.h module11_class_template/temp_friend/tempfriend.cpp module11_class_template/tmp2tmp/tmp2tmp.cpp)
+        module11_class_template/member_template/tempmemb.h module11_class_template/temp_parm/tempparm.cpp module11_class_template/temp_parm/tempparm.h module11_class_template/temp_friend/tempfriend.cpp module11_class_template/tmp2tmp/tmp2tmp.cpp module11_class_template/manyfrnd/manyfrnd.cpp)
