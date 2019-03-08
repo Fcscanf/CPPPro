@@ -839,8 +839,9 @@ void useNestClass(){
 // 调用abort处理异常
 double hmean(double a, double b){
     if (a == -b) {
-        cout << "untenable argument to hmean()\n";
-        abort();
+        throw "bad hmean() arguments: a = -b not allowed!";
+//        cout << "untenable argument to hmean()\n";
+//        abort();
     }
     return 2.0 * a * b / (a + b);
 }
@@ -882,6 +883,24 @@ void errorCode(){
     cout << "Bye!\n";
 }
 
+// 捕获异常
+void errorTryCatch(){
+    double x, y, z;
+    cout << "Enter two numbers: ";
+    while (cin >> x >> y) {
+        try {
+            z = hmean(x, y);
+        }catch (const char * s) {
+            cout << s << endl;
+            cout << "Enter a new pair of number: ";
+            continue;
+        }
+        cout << "Harmonic mean of " << x << " and " << y << " is " << z << endl;
+        cout << "Enter next set of numbers <q to quit>: ";
+    }
+    cout << "Bye!\n";
+}
+
 int main() {
 
 //    pointer();
@@ -903,7 +922,8 @@ int main() {
 //    useFriendClass();
 //    useNestClass();
 //    errorOne();
-    errorCode();
+//    errorCode();
+    errorTryCatch();
 
 
     double a = square(5.0);
