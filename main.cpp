@@ -20,6 +20,7 @@
 #include "module11_class_template/arrry/arraytp.h"
 #include "module11_class_template/multiple_type_parameters/pairs.h"
 #include "module12_friend_class/tv.h"
+#include "module13_nesting/template_nesting/queuetp.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -816,6 +817,24 @@ void useFriendClass(){
     s32.setting();
 }
 
+// 嵌套类的使用
+void useNestClass(){
+    QueueTP<string> cs(5);
+    string temp;
+
+    while (!cs.isfull()) {
+        cout << "Please enter your name. You will be served in the order of arrival.\n name: ";
+        getline(cin, temp);
+        cs.enqueue(temp);
+    }
+    cout << "The queue is full. Processing bedins!\n";
+
+    while (!cs.isempty()) {
+        cs.dequeue(temp);
+        cout << "Now processing " << temp << "...\n";
+    }
+}
+
 int main() {
 
 //    pointer();
@@ -834,7 +853,8 @@ int main() {
 //    usePointerStack();
 //    useArrayTemplate();
 //    useMultipleTypeParameter();
-    useFriendClass();
+//    useFriendClass();
+    useNestClass();
 
     double a = square(5.0);
     cout << "a : " << a << endl;

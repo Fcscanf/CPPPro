@@ -30,4 +30,4 @@ add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module11_class_template/member_template/tempmemb.cpp
         module11_class_template/member_template/tempmemb.h
         module11_class_template/manyfrnd/manyfrnd.cpp
-        module12_friend_class/tv.cpp module12_friend_class/tv.h module12_friend_class/friendclass_memfunction/tvfm.cpp module12_friend_class/friendclass_memfunction/tvfm.h)
+        module12_friend_class/tv.cpp module12_friend_class/tv.h module12_friend_class/friendclass_memfunction/tvfm.cpp module12_friend_class/friendclass_memfunction/tvfm.h module13_nesting/template_nesting/queuetp.cpp module13_nesting/template_nesting/queuetp.h)
