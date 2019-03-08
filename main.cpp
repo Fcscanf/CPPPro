@@ -19,6 +19,7 @@
 #include "module11_class_template/pointer_stack/stcktp.h"
 #include "module11_class_template/arrry/arraytp.h"
 #include "module11_class_template/multiple_type_parameters/pairs.h"
+#include "module12_friend_class/tv.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -791,24 +792,49 @@ void useMultipleTypeParameter(){
     }
 }
 
+// 友元类的使用
+void useFriendClass(){
+    Tv s27;
+    cout << "Initial setting for 27\" TV:\n";
+    s27.setting();
+    s27.onoff();
+    s27.chanup();
+    cout << "\nAdjusted setting for 27\" TV:\n";
+    s27.setting();
+
+    Remote grey;
+    grey.set_chan(s27, 10);
+    grey.volup(s27);
+    grey.volup(s27);
+    cout << "\n27\" settings after using remote:\n";
+    s27.setting();
+
+    Tv s32(Tv::On);
+    s32.set_mode();
+    grey.set_chan(s32, 28);
+    cout << "\n32\" setting:\n";
+    s32.setting();
+}
+
 int main() {
 
-    //pointer();
-    //structure();
-    //fileoperation("info.txt");
-    //referenceVariable();
-    //useTemSwap();
-    //friendFunction();
-    //randwalk();
-    //bank();
-    //usett();
-    //useBrass();
-    //usedma();
-    //workmi();
-    //useTemplateClass();
-    //usePointerStack();
-    //useArrayTemplate();
-    useMultipleTypeParameter();
+//    pointer();
+//    structure();
+//    fileoperation("info.txt");
+//    referenceVariable();
+//    useTemSwap();
+//    friendFunction();
+//    randwalk();
+//    bank();
+//    usett();
+//    useBrass();
+//    usedma();
+//    workmi();
+//    useTemplateClass();
+//    usePointerStack();
+//    useArrayTemplate();
+//    useMultipleTypeParameter();
+    useFriendClass();
 
     double a = square(5.0);
     cout << "a : " << a << endl;

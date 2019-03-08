@@ -4,6 +4,10 @@ project(Pro1)
 set(CMAKE_CXX_STANDARD 14)
 
 # module8_abstract/acctabc.cpp module8_abstract/acctabc.h
+# module11_class_template/temp_friend/tempfriend.cpp
+# module11_class_template/tmp2tmp/tmp2tmp.cpp
+# module11_class_template/temp_parm/tempparm.cpp
+# module11_class_template/temp_parm/tempparm.h
 
 add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module2/Stock.cpp module2/Stock.h
@@ -24,4 +28,6 @@ add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module11_class_template/multiple_type_parameters/pairs.cpp
         module11_class_template/multiple_type_parameters/pairs.h
         module11_class_template/member_template/tempmemb.cpp
-        module11_class_template/member_template/tempmemb.h module11_class_template/temp_parm/tempparm.cpp module11_class_template/temp_parm/tempparm.h module11_class_template/temp_friend/tempfriend.cpp module11_class_template/tmp2tmp/tmp2tmp.cpp module11_class_template/manyfrnd/manyfrnd.cpp)
+        module11_class_template/member_template/tempmemb.h
+        module11_class_template/manyfrnd/manyfrnd.cpp
+        module12_friend_class/tv.cpp module12_friend_class/tv.h)
