@@ -22,6 +22,7 @@
 #include "module11_class_template/multiple_type_parameters/pairs.h"
 #include "module12_friend_class/tv.h"
 #include "module13_nesting/template_nesting/queuetp.h"
+#include "module14_error/error_class/exc_mean.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -901,6 +902,46 @@ void errorTryCatch(){
     cout << "Bye!\n";
 }
 
+// function proptotypes
+double hmeans(double a, double b) throw (bad_hmean);
+double gmeans(double a, double b) throw (bad_gmean);
+
+double hmeans(double a, double b) throw (bad_hmean){
+    if (a == -b)
+        throw bad_hmean(a, b);
+    return 2.0 * a * b / (a + b);
+}
+
+double gmeans(double a, double b) throw (bad_gmean){
+    if (a < 0 || b < 0) {
+        throw bad_gmean(a, b);
+    }
+    return sqrt(a * b);
+}
+
+void useErrorClass(){
+    double x, y, z;
+    cout << "Enter two numbers: ";
+    while (cin >> x >> y) {
+        try {
+            z = hmeans(x, y);
+            cout << "Harmonic mean of " << x << " and " << y << " is " << z << endl;
+            cout << "Geometric mean of " << x << " and " << y << " is " << gmeans(x, y) << endl;
+            cout << "Enter next set of numbers <q to quit>: ";
+        }catch (bad_hmean & bg) {
+            bg.mesg();
+            cout << "Try again.\n";
+            continue;
+        }catch (bad_gmean & hg) {
+            cout << hg.mesg();
+            cout << "Values used: " << hg.v1 << ", " << hg.v2 << endl;
+            cout << "Sorry , you don't get to play any more.\n";
+            break;
+        }
+    }
+    cout << "Bye!\n";
+}
+
 int main() {
 
 //    pointer();
@@ -923,7 +964,8 @@ int main() {
 //    useNestClass();
 //    errorOne();
 //    errorCode();
-    errorTryCatch();
+//    errorTryCatch();
+    useErrorClass();
 
 
     double a = square(5.0);
