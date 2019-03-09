@@ -7,6 +7,7 @@
 #include <ctime>
 #include <cctype>
 #include <cfloat>
+#include <vector>
 #include "module1/Mouh.h"
 #include "module2/Stock.h"
 #include "module3/FcTime.h"
@@ -943,6 +944,25 @@ void useErrorClass(){
     cout << "Bye!\n";
 }
 
+// 分配器
+const int NUM = 5;
+void useVector(){
+    vector<int> rating(NUM);
+    vector<double > titles(NUM);
+    cout << "You will do ecactly as told. You will enter\n" << NUM << "book titles and your rating(0-10).\n";
+    for (int i = 0; i < NUM; i++) {
+        cout << "Enter title # " << i + 1 << ": ";
+        cin >> titles[i];
+        cout << "Enter your rating (0-10): ";
+        cin >> rating[i];
+        cin.get();
+    }
+    cout << "Thank you. You entered the following: \n" << "Rating\tBook\n";
+    for (int i = 0; i < NUM; i++) {
+        cout << rating[i] << "\t" << titles[i] << endl;
+    }
+}
+
 int main() {
 
 //    pointer();
@@ -966,7 +986,8 @@ int main() {
 //    errorOne();
 //    errorCode();
 //    errorTryCatch();
-    useErrorClass();
+//    useErrorClass();
+    useVector();
 
 
     double a = square(5.0);
