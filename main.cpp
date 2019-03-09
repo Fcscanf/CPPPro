@@ -7,6 +7,7 @@
 #include <ctime>
 #include <cctype>
 #include <cfloat>
+#include <iterator>
 #include <vector>
 #include <algorithm>
 #include "module1/Mouh.h"
@@ -1027,6 +1028,51 @@ void stlFunction(){
     cout << "Bye.\n";
 }
 
+// 迭代器
+void useIterator(){
+    int casts[10] = {6, 7, 2, 9, 4, 11, 8, 7, 10, 5};
+    vector<int > dice(10);
+    // copy from to vector
+    copy(casts, casts + 10, dice.begin());
+    cout << "Let the dice be cast!\n";
+    // create an ostream iterator
+    ostream_iterator<int ,char> out_iter(cout, " ");
+    // copy from vector to output
+    copy(dice.begin(), dice.end(), out_iter);
+    cout << endl;
+    cout << "Implict use of reverse iterator.\n";
+    copy(dice.rbegin(), dice.rend(), out_iter);
+    cout << endl;
+    cout << endl;
+    cout << "Implicit use of reverse iterator.\n";
+    vector<int >::reverse_iterator ri;
+    for (ri = dice.rbegin(); ri != dice.rend(); ++ri)
+        cout << *ri << ' ';
+    cout << endl;
+}
+
+// insert
+void iteratorInsert(){
+    string s1[4] = {"fine", "fish", "fashion", "fate"};
+    string s2[2] = {"busy", "bats"};
+    string s3[2] = {"silly", "singers"};
+    vector<string> words(4);
+    copy(s1, s1 + 4, words.begin());
+    ostream_iterator<string, char> out(cout, " ");
+    copy(words.begin(), words.end(), out);
+    cout << endl;
+
+    // construct anonymous back_insert_iterator object
+    copy(s2, s2 + 2, back_insert_iterator<vector<string>>(words));
+    copy(words.begin(), words.end(), out);
+    cout << endl;
+
+    // construct anonymous back_insert_iterator object
+    copy(s3, s3 + 2, insert_iterator<vector<string>>(words, words.begin()));
+    copy(words.begin(), words.end(), out);
+    cout << endl;
+}
+
 int main() {
 
 //    pointer();
@@ -1052,7 +1098,9 @@ int main() {
 //    errorTryCatch();
 //    useErrorClass();
 //    useVector();
-    stlFunction();
+//    stlFunction();
+    useIterator();
+    iteratorInsert();
 
 
     double a = square(5.0);
