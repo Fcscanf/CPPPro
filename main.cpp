@@ -8,6 +8,7 @@
 #include <cctype>
 #include <cfloat>
 #include <vector>
+#include <algorithm>
 #include "module1/Mouh.h"
 #include "module2/Stock.h"
 #include "module3/FcTime.h"
@@ -839,6 +840,7 @@ void useNestClass(){
     }
 }
 
+// ***********************************异常**************************************
 // 调用abort处理异常
 double hmean(double a, double b){
     if (a == -b) {
@@ -886,7 +888,7 @@ void errorCode(){
     cout << "Bye!\n";
 }
 
-// 捕获异常
+// ------------------------------------捕获异常-----------------------------------
 void errorTryCatch(){
     double x, y, z;
     cout << "Enter two numbers: ";
@@ -944,7 +946,8 @@ void useErrorClass(){
     cout << "Bye!\n";
 }
 
-// 分配器
+// ************************************STL**************************************
+// -----------------------------------分配器-----------------------------------
 const int NUM = 5;
 void useVector(){
     vector<int> rating(NUM);
@@ -961,6 +964,67 @@ void useVector(){
     for (int i = 0; i < NUM; i++) {
         cout << rating[i] << "\t" << titles[i] << endl;
     }
+}
+
+// STL函数的用法
+struct Review{
+    string title;
+    int rating;
+};
+
+bool operator<(const Review & r1, const Review & r2);
+bool worseThan(const Review & r1, const Review & r2);
+bool FillReview(Review & rr);
+void ShowReview(const Review & rr);
+
+bool operator<(const Review & r1, const Review & r2){
+    if (r1.title < r2.title)
+        return true;
+    else if (r1.title == r2.title && r1.rating < r2.rating)
+        return false;
+    else
+        return false;
+}
+
+bool worseThan(const Review & r1, const Review & r2){
+    if (r1.rating < r2.rating)
+        return true;
+    else
+        return false;
+}
+
+bool FillReview(Review & rr){
+    cout << "Enter book title(quit to quit): ";
+    getline(cin, rr.title);
+    if (rr.title == "quit")
+        return false;
+    cout << "Enter book rating: ";
+    cin >> rr.rating;
+    if (!cin)
+        return false;
+    cin.get();
+    return true;
+}
+
+void ShowReview(const Review & rr){
+    cout << rr.rating << "\t" << rr.title << endl;
+}
+
+
+void stlFunction(){
+    vector<Review> books;
+    Review temp;
+    while (FillReview(temp))
+        books.push_back(temp);
+    cout << "Thanks ,you entered the following " << books.size() << " rating:\n" << "Rating\tBook\n";
+    for_each(books.begin(), books.end(), ShowReview);
+    sort(books.begin(), books.end());
+    cout << "Sorted by title : \nRating\tBook\n";
+    for_each(books.begin(), books.end(), ShowReview);
+    sort(books.begin(), books.end(), worseThan);
+    cout << "Sorted by rating : \nRating\tBook\n";
+    for_each(books.begin(), books.end(), ShowReview);
+    cout << "Bye.\n";
 }
 
 int main() {
@@ -987,7 +1051,8 @@ int main() {
 //    errorCode();
 //    errorTryCatch();
 //    useErrorClass();
-    useVector();
+//    useVector();
+    stlFunction();
 
 
     double a = square(5.0);
