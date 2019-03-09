@@ -23,6 +23,7 @@
 #include "module12_friend_class/tv.h"
 #include "module13_nesting/template_nesting/queuetp.h"
 #include "module14_error/error_class/exc_mean.h"
+#include "module14_error/stack_resolution/stack_resolution.h"
 
 // 常量的定义
 #define INT_MAX 59964

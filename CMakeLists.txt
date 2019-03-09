@@ -8,6 +8,8 @@ set(CMAKE_CXX_STANDARD 14)
 # module11_class_template/tmp2tmp/tmp2tmp.cpp
 # module11_class_template/temp_parm/tempparm.cpp
 # module11_class_template/temp_parm/tempparm.h
+# module14_error/stack_resolution/stack_resolution.cpp
+# module14_error/stack_resolution/stack_resolution.h
 
 add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module2/Stock.cpp module2/Stock.h
@@ -35,4 +37,4 @@ add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module12_friend_class/friendclass_memfunction/tvfm.h
         module13_nesting/template_nesting/queuetp.cpp
         module13_nesting/template_nesting/queuetp.h
-        module14_error/error_class/exc_mean.cpp module14_error/error_class/exc_mean.h module14_error/stack_resolution/stack_resolution.cpp module14_error/stack_resolution/stack_resolution.h)
+        module14_error/error_class/exc_mean.cpp module14_error/error_class/exc_mean.h)
