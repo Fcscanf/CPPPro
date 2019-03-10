@@ -1523,6 +1523,42 @@ void useSlice(){
 //    11   1  10
 }
 
+void useWrite(){
+    const char * state1 = "Florida";
+    const char * state2 = "Kansas";
+    const char * state3 = "Euphoria";
+    int len = strlen(state2);
+    cout << "Increasing loop index: \n";
+    for (int i = 0; i < len; i++) {
+        cout.write(state2, i);
+        cout << endl;
+    }
+    cout << "Decreasing loop index: \n";
+    for (int i = len; i > 0; i--)
+        cout.write(state2, i) << endl;
+
+    cout << "Exceeding string length:\n";
+    cout.write(state2, len + 5) << endl;
+
+//    运行结果：
+//    Increasing loop index:
+//
+//    K
+//    Ka
+//    Kan
+//    Kans
+//    Kansa
+//    Decreasing loop index:
+//    Kansas
+//    Kansa
+//    Kans
+//    Kan
+//    Ka
+//    K
+//    Exceeding string length:
+//    Kansas Euph
+}
+
 int main() {
 
 //    pointer();
@@ -1560,7 +1596,8 @@ int main() {
 //    funList();
 //    useSTL();
 //    valvect();
-    useSlice();
+//    useSlice();
+    useWrite();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
