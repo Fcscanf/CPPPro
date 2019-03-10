@@ -7,6 +7,7 @@
 #include <ctime>
 #include <cctype>
 #include <cfloat>
+#include <list>
 #include <iterator>
 #include <vector>
 #include <algorithm>
@@ -1073,6 +1074,47 @@ void iteratorInsert(){
     cout << endl;
 }
 
+// List的相关操作
+void useList(){
+    int stuff[5] = {1, 2, 4, 8, 6};
+    list<int> two;
+    two.insert(two.begin(), stuff, stuff + 5);
+    int more[6] = {6, 4, 2, 4, 6, 5};
+    list<int> three(two);
+    three.insert(three.end(), more, more + 6);
+
+    cout << "List two: ";
+    ostream_iterator<int , char> out(cout, " ");
+    copy(two.begin(), two.end(), out);
+    cout << endl << "List three: ";
+    copy(three.begin(), three.end(), out);
+    three.remove(2);
+    cout << endl << "List three minus 2s: ";
+    copy(three.begin(), three.end(), out);
+    three.splice(three.begin(), two);
+    cout << endl << "List three after splice: ";
+    three.unique();
+    cout << endl << "List three after unique: ";
+    copy(three.begin(), three.end(), out);
+    three.sort();
+    three.unique();
+    cout << endl << "List three after sort & unique: ";
+    copy(three.begin(), three.end(), out);
+    two.sort();
+    three.merge(two);
+    cout << endl << "Sorted two merged into three: ";
+    copy(three.begin(), three.end(), out);
+    cout << endl;
+//    运行结果
+//    List two: 1 2 4 8 6
+//    List three: 1 2 4 8 6 6 4 2 4 6 5
+//    List three minus 2s: 1 4 8 6 6 4 4 6 5
+//    List three after splice:
+//    List three after unique: 1 2 4 8 6 1 4 8 6 4 6 5
+//    List three after sort & unique: 1 2 4 5 6 8
+//    Sorted two merged into three: 1 2 4 5 6 8
+}
+
 int main() {
 
 //    pointer();
@@ -1099,8 +1141,9 @@ int main() {
 //    useErrorClass();
 //    useVector();
 //    stlFunction();
-    useIterator();
-    iteratorInsert();
+//    useIterator();
+//    iteratorInsert();
+    useList();
 
 
     double a = square(5.0);
