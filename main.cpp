@@ -1292,6 +1292,33 @@ void funadap(){
 //    prod:	  90.08224  97.58224 105.08224 112.58224 120.08224
 }
 
+// STL和String类
+void stlString(){
+    string letters;
+    cout << "Enter the letter grouping (q to quit): ";
+    while (cin >> letters && letters != "q"){
+        cout << "Permutations of " << letters << endl;
+        sort(letters.begin(), letters.end());
+        cout << letters << endl;
+        while (next_permutation(letters.begin(), letters.end()))
+            cout << letters << endl;
+        cout << "Enter next sequence (q to quit): ";
+    }
+    cout << "Done.\n";
+
+//    运行结果：
+//    Enter the letter grouping (q to quit): wed
+//    Permutations of wed
+//    dew
+//    dwe
+//    edw
+//    ewd
+//    wde
+//    wed
+//    Enter next sequence (q to quit): q
+//    Done.
+}
+
 int main() {
 
 //    pointer();
@@ -1324,7 +1351,8 @@ int main() {
 //    useSet();
 //    useMultimap();
 //    useFunctor();
-    funadap();
+//    funadap();
+    stlString();
 
 
     double a = square(5.0);
