@@ -1464,6 +1464,65 @@ void valvect(){
 //    Done!
 }
 
+// slice的使用
+const int SIZE = 12;
+typedef valarray<int> vint;
+void Show_s(const vint & v, int cols);
+
+void Show_s(const vint & v, int cols){
+    int lim = v.size();
+    for (int i = 0; i < lim; i++) {
+        cout.width(3);
+        cout << v[i];
+        if (i % cols == cols - 1)
+            cout << endl;
+        else
+            cout << ' ';
+    }
+    if (lim % cols != 0)
+        cout << endl;
+}
+
+void useSlice(){
+    vint valint(SIZE);
+    for (int i = 0; i < SIZE; i++) {
+        valint[i] = rand() % 10;
+    }
+    cout << "Original array: \n";
+    Show_s(valint, 3);
+    vint vcol(valint[slice(1, 4, 3)]);
+    cout << "Second column: \n";
+    Show_s(vcol, 1);
+    valint[slice(2, 4, 3)] = 10;
+    cout << "Set last column to 10 :\n";
+    Show_s(valint, 3);
+    cout << "Set first column to sum of next two:\n";
+    valint[slice(0, 4, 3)] = vint(valint[slice(1, 4, 3)]) + vint(valint[slice(2, 4, 3)]);
+    Show_s(valint, 3);
+
+//    运行结果：
+//    Original array:
+//    3   3   2
+//    9   0   8
+//    2   6   6
+//    9   1   1
+//    Second column:
+//    3
+//    0
+//    6
+//    1
+//    Set last column to 10 :
+//    3   3  10
+//    9   0  10
+//    2   6  10
+//    9   1  10
+//    Set first column to sum of next two:
+//    13   3  10
+//    10   0  10
+//    16   6  10
+//    11   1  10
+}
+
 int main() {
 
 //    pointer();
@@ -1500,8 +1559,8 @@ int main() {
 //    stlString();
 //    funList();
 //    useSTL();
-    valvect();
-
+//    valvect();
+    useSlice();
 
     double a = square(5.0);
     cout << "a : " << a << endl;
