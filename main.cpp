@@ -12,6 +12,7 @@
 #include <map>
 #include <iterator>
 #include <vector>
+#include <valarray>
 #include <algorithm>
 #include <functional>
 #include "module1/Mouh.h"
@@ -1422,6 +1423,46 @@ void useSTL(){
 //    thought: 2
 }
 
+// 其他STL库的使用
+void valvect(){
+    vector<double > data;
+    double temp;
+    cout << "Enter numbers(<= 0 to quit):\n";
+    while (cin >> temp && temp > 0)
+        data.push_back(temp);
+    sort(data.begin(), data.end());
+    int size = data.size();
+    valarray<double > numbers(size);
+    int i;
+    for (int i = 0; i < size; i++) {
+        numbers[i] = data[i];
+    }
+    valarray<double > sq_rts(size);
+    sq_rts = sqrt(numbers);
+    valarray<double > result(size);
+    result = numbers + 2.0 * sq_rts;
+    cout.setf(ios_base::fixed);
+    cout.precision(4);
+    for (int i = 0; i < size; i++) {
+        cout.width(8);
+        cout << numbers[i] << ": ";
+        cout.widen(8);
+        cout << result[i] << endl;
+    }
+    cout << "Done!\n";
+
+//    运行结果：
+//    Enter numbers(<= 0 to quit):
+//    5 21.2 6 8 2 10 14.4 0
+//    2.0000: 4.8284
+//    5.0000: 9.4721
+//    6.0000: 10.8990
+//    8.0000: 13.6569
+//    10.0000: 16.3246
+//    14.4000: 21.9895
+//    21.2000: 30.4087
+//    Done!
+}
 
 int main() {
 
@@ -1458,7 +1499,8 @@ int main() {
 //    funadap();
 //    stlString();
 //    funList();
-    useSTL();
+//    useSTL();
+    valvect();
 
 
     double a = square(5.0);
