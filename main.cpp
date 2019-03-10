@@ -9,6 +9,7 @@
 #include <cfloat>
 #include <list>
 #include <set>
+#include <map>
 #include <iterator>
 #include <vector>
 #include <algorithm>
@@ -1176,6 +1177,49 @@ void useSet(){
 //    grungyheavymetal
 }
 
+// multimap的相关操作
+typedef int KeyType;
+typedef pair<const KeyType, string> Pairs;
+typedef multimap<KeyType , string> MapCode;
+void useMultimap(){
+    MapCode codes;
+
+    codes.insert(Pairs(415, "San Francisco"));
+    codes.insert(Pairs(510, "Oakland"));
+    codes.insert(Pairs(718, "Brooklyn"));
+    codes.insert(Pairs(718, "Staten Island"));
+    codes.insert(Pairs(415, "San Rafael"));
+    codes.insert(Pairs(510, "Berkeley"));
+
+    cout << "Number if cities with area code 415: " << codes.count(415) << endl;
+    cout << "Number if cities with area code 718: " << codes.count(718) << endl;
+    cout << "Number if cities with area code 510: " << codes.count(510) << endl;
+    cout << "Area Code City\n";
+    MapCode::iterator it;
+    for (it = codes.begin(); it != codes.end(); ++it){
+        cout << "   " << (*it).first << "   " << (*it).second << endl;
+    }
+    pair<MapCode::iterator, MapCode::iterator> range = codes.equal_range(718);
+    cout << "Cities with area code 718: \n";
+    for (it = range.first; it != range.second; ++it)
+        cout << (*it).second << endl;
+
+//    运行结果:
+//    Number if cities with area code 415: 2
+//    Number if cities with area code 718: 2
+//    Number if cities with area code 510: 2
+//    Area Code City
+//    415   San Francisco
+//    415   San Rafael
+//    510   Oakland
+//    510   Berkeley
+//    718   Brooklyn
+//    718   Staten Island
+//    Cities with area code 718:
+//    Brooklyn
+//    Staten Island
+}
+
 int main() {
 
 //    pointer();
@@ -1205,7 +1249,8 @@ int main() {
 //    useIterator();
 //    iteratorInsert();
 //    useList();
-    useSet();
+//    useSet();
+    useMultimap();
 
 
     double a = square(5.0);
