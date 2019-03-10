@@ -1361,6 +1361,68 @@ void funList(){
 //    lb: 	5 2 2 3 8 1
 }
 
+// 使用STL
+char toLower(char ch){ return tolower(ch); }
+string & ToLower(string & st);
+void display(const string & s);
+
+string & ToLower(string & st){
+    transform(st.begin(), st.end(), st.begin(), toLower);
+    return st;
+}
+
+void display(const string & s){
+    cout << s << " ";
+}
+
+void useSTL(){
+    vector<string> words;
+    cout << "Enter words (enter q to quit): \n";
+    string input;
+    while (cin >> input && input != "q")
+        words.push_back(input);
+    cout << "You entered the following words:\n";
+    for_each(words.begin(), words.end(), display);
+    cout << endl;
+    // place words in set, converting to lowercase
+    set<string> wordset;
+    transform(words.begin(), words.end(), insert_iterator<set<string>>(wordset, wordset.begin()), ToLower);
+    cout << "\nAlphabetic list of words: \n";
+    for_each(wordset.begin(), wordset.end(), display);
+    cout << endl;
+
+    // place word and frequency in map
+    map<string, int> wordmap;
+    set<string>::iterator si;
+    for (si = wordset.begin(); si != wordset.end(); si++)
+        wordmap[*si] = count(words.begin(), words.end(), *si);
+
+    // display map contents
+    cout << "\nWord frequency: \n";
+    for (si = wordset.begin(); si != wordset.end(); si++)
+        cout << *si << ": " << wordmap[*si] << endl;
+
+//    运行结果：
+//    Enter words (enter q to quit):
+//    The dog saw the cat thought the cat fat the cat thought the cat perfact
+//    q
+//    You entered the following words:
+//    The dog saw the cat thought the cat fat the cat thought the cat perfact
+//
+//    Alphabetic list of words:
+//    cat dog fat perfact saw the thought
+//
+//    Word frequency:
+//    cat: 4
+//    dog: 1
+//    fat: 1
+//    perfact: 1
+//    saw: 1
+//    the: 5
+//    thought: 2
+}
+
+
 int main() {
 
 //    pointer();
@@ -1395,7 +1457,8 @@ int main() {
 //    useFunctor();
 //    funadap();
 //    stlString();
-    funList();
+//    funList();
+    useSTL();
 
 
     double a = square(5.0);
