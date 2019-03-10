@@ -13,6 +13,7 @@
 #include <iterator>
 #include <vector>
 #include <algorithm>
+#include <functional>
 #include "module1/Mouh.h"
 #include "module2/Stock.h"
 #include "module3/FcTime.h"
@@ -1252,6 +1253,45 @@ void useFunctor(){
 //    50 100 90 180 60 88 188
 }
 
+// funadap-自适应函数符和函数适配器
+void Shows(double);
+const int LIM = 5;
+void Shows(double v){
+    cout.width(6);
+    cout << v << '  ';
+}
+void funadap(){
+    double arr1[LIM] = {36, 39, 42, 45, 48};
+    double arr2[LIM] = {25, 27, 29, 31, 33};
+    vector<double> gr8(arr1, arr1 + LIM);
+    vector<double> m8(arr2, arr2 + LIM);
+    cout.setf(ios_base::fixed);
+    cout.precision(1);
+    cout << "gr8: \t";
+    for_each(gr8.begin(), gr8.end(), Shows);
+    cout << endl;
+    cout << "m8: \t";
+    for_each(m8.begin(), m8.end(), Shows);
+    cout << endl;
+    vector<double > sum(LIM);
+    transform(gr8.begin(), gr8.end(), m8.begin(), sum.begin(), plus<double>());
+    cout << "sum: \t";
+    for_each(sum.begin(), sum.end(), Shows);
+    cout << endl;
+
+    vector<double > prod(LIM);
+    transform(gr8.begin(), gr8.end(), prod.begin(), bind1st(multiplies<double>(), 2.5));
+    cout << "prod:\t";
+    for_each(prod.begin(), prod.end(), Shows);
+    cout << endl;
+
+//    运行结果：
+//    gr8: 	  36.08224  39.08224  42.08224  45.08224  48.08224
+//    m8: 	  25.08224  27.08224  29.08224  31.08224  33.08224
+//    sum: 	  61.08224  66.08224  71.08224  76.08224  81.08224
+//    prod:	  90.08224  97.58224 105.08224 112.58224 120.08224
+}
+
 int main() {
 
 //    pointer();
@@ -1283,7 +1323,8 @@ int main() {
 //    useList();
 //    useSet();
 //    useMultimap();
-    useFunctor();
+//    useFunctor();
+    funadap();
 
 
     double a = square(5.0);
