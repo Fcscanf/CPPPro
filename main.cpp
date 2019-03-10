@@ -1319,6 +1319,48 @@ void stlString(){
 //    Done.
 }
 
+// 函数和容器方法
+void View(int);
+void View(int v){
+    cout << v << ' ';
+}
+const int LIMS = 10;
+void funList(){
+    int ar[LIMS] = {4, 5, 4, 2, 2, 3, 4, 8, 1, 4};
+    list<int> la(ar, ar + LIMS);
+    list<int> lb(la);
+
+    cout << "Original list contents: \n\t";
+    for_each(la.begin(), la.end(), View);
+    cout << endl;
+    la.remove(4);
+    cout << "After using the remove() method: \n";
+    cout << "la: \t";
+    for_each(la.begin(), la.end(), View);
+    cout << endl;
+    list<int>::iterator last;
+    last = remove(lb.begin(), lb.end(), 4);
+    cout << "After using the remove() function: \n";
+    cout << "lb: \t";
+    for_each(lb.begin(), lb.end(), View);
+    cout << endl;
+    lb.erase(last, lb.end());
+    cout << "After using the erase() method: \n";
+    cout << "lb: \t";
+    for_each(lb.begin(), lb.end(), View);
+    cout << endl;
+
+//    运行结果：
+//    Original list contents:
+//    4 5 4 2 2 3 4 8 1 4
+//    After using the remove() method:
+//    la: 	5 2 2 3 8 1
+//    After using the remove() function:
+//    lb: 	5 2 2 3 8 1 4 8 1 4
+//    After using the erase() method:
+//    lb: 	5 2 2 3 8 1
+}
+
 int main() {
 
 //    pointer();
@@ -1352,7 +1394,8 @@ int main() {
 //    useMultimap();
 //    useFunctor();
 //    funadap();
-    stlString();
+//    stlString();
+    funList();
 
 
     double a = square(5.0);
