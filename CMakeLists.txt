@@ -37,4 +37,4 @@ add_executable(Pro1 main.cpp module1/Mouh.cpp module1/Mouh.h
         module12_friend_class/friendclass_memfunction/tvfm.h
         module13_nesting/template_nesting/queuetp.cpp
         module13_nesting/template_nesting/queuetp.h
-        module14_error/error_class/exc_mean.cpp module14_error/error_class/exc_mean.h)
+        module14_error/error_class/exc_mean.cpp module14_error/error_class/exc_mean.h module17_stl/functor/functor.cpp module17_stl/functor/functor.h)

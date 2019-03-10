@@ -30,6 +30,7 @@
 #include "module13_nesting/template_nesting/queuetp.h"
 #include "module14_error/error_class/exc_mean.h"
 #include "module14_error/stack_resolution/stack_resolution.h"
+#include "module17_stl/functor/functor.h"
 
 // 常量的定义
 #define INT_MAX 59964
@@ -1220,6 +1221,37 @@ void useMultimap(){
 //    Staten Island
 }
 
+// 函数符
+void useFunctor(){
+    TooBig<int> f100(100);
+    list<int> yadayada;
+    list<int> etcetera;
+    int vals[10] = {50, 100, 90, 180, 60, 210, 415, 88, 188, 201};
+    yadayada.insert(yadayada.begin(), vals, vals + 10);
+    etcetera.insert(etcetera.begin(), vals, vals + 10);
+    ostream_iterator<int, char> out(cout, " ");
+    cout << "Original list:\n";
+    copy(yadayada.begin(), yadayada.end(), out);
+    cout << endl;
+    copy(etcetera.begin(), etcetera.end(), out);
+    cout << endl;
+    yadayada.remove_if(f100);
+    etcetera.remove_if(TooBig<int>(200));
+    cout << "Trimmed lists:\n";
+    copy(yadayada.begin(), yadayada.end(), out);
+    cout << endl;
+    copy(etcetera.begin(), etcetera.end(), out);
+    cout << endl;
+
+//    运行结果：
+//    Original list:
+//    50 100 90 180 60 210 415 88 188 201
+//    50 100 90 180 60 210 415 88 188 201
+//    Trimmed lists:
+//    50 100 90 60 88
+//    50 100 90 180 60 88 188
+}
+
 int main() {
 
 //    pointer();
@@ -1250,7 +1282,8 @@ int main() {
 //    iteratorInsert();
 //    useList();
 //    useSet();
-    useMultimap();
+//    useMultimap();
+    useFunctor();
 
 
     double a = square(5.0);
