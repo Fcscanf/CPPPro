@@ -8,6 +8,7 @@
 #include <cctype>
 #include <cfloat>
 #include <list>
+#include <set>
 #include <iterator>
 #include <vector>
 #include <algorithm>
@@ -1115,6 +1116,66 @@ void useList(){
 //    Sorted two merged into three: 1 2 4 5 6 8
 }
 
+// Set的相关操作
+void useSet(){
+    const int N = 6;
+    string s1[N] = {"buffon", "thinkers", "for", "heavy", "can", "for"};
+    string s2[N] = {"metal", "any", "food", "elegant", "deliver", "for"};
+
+    set<string> A (s1, s1 + N);
+    set<string> B (s2, s2 + N);
+    ostream_iterator<string, char> out(cout, "");
+    cout << "Set A: ";
+    copy(A.begin(), A.end(), out);
+    cout << endl;
+    cout << "Set B: ";
+    copy(B.begin(), B.end(), out);
+    cout << endl;
+
+    cout << "Union of A and B: \n";
+    set_union(A.begin(), A.end(), B.begin(), B.end(), out);
+    cout << endl;
+
+    cout << "Intersection of A and B:\n";
+    set_intersection(A.begin(), A.end(), B.begin(), B.end(), out);
+    cout << endl;
+
+    cout << "Difference of A and B:\n";
+    set_difference(A.begin(), A.end(), B.begin(), B.end(), out);
+    cout << endl;
+
+    set<string> C;
+    cout << "Set C:\n";
+    set_union(A.begin(), A.end(), B.begin(), B.end(), insert_iterator<set<string>>(C, C.begin()));
+    copy(C.begin(), C.end(), out);
+    cout << endl;
+
+    string s3("grungy");
+    C.insert(s3);
+    cout << "Set C after insertion: \n";
+    copy(C.begin(), C.end(), out);
+    cout << endl;
+
+    cout << "Showing a range:\n";
+    copy(C.lower_bound("ghost"), C.upper_bound("spook"), out);
+    cout << endl;
+//    运行结果：
+//    Set A: buffoncanforheavythinkers
+//    Set B: anydeliverelegantfoodformetal
+//    Union of A and B:
+//    anybuffoncandeliverelegantfoodforheavymetalthinkers
+//    Intersection of A and B:
+//    for
+//    Difference of A and B:
+//    buffoncanheavythinkers
+//    Set C:
+//    anybuffoncandeliverelegantfoodforheavymetalthinkers
+//    Set C after insertion:
+//    anybuffoncandeliverelegantfoodforgrungyheavymetalthinkers
+//    Showing a range:
+//    grungyheavymetal
+}
+
 int main() {
 
 //    pointer();
@@ -1143,7 +1204,8 @@ int main() {
 //    stlFunction();
 //    useIterator();
 //    iteratorInsert();
-    useList();
+//    useList();
+    useSet();
 
 
     double a = square(5.0);
